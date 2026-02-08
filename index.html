@@ -6,162 +6,53 @@
     <title>LIA | SYSTEM OPERATIONAL</title>
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-red: #ff0000;
-            --bg-black: #050505;
-            --text-gray: #a0a0a0;
-        }
-
-        body {
-            background-color: var(--bg-black);
-            color: white;
-            font-family: 'Courier Prime', monospace;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            overflow-x: hidden;
-            text-align: center;
-        }
-
-        .container {
-            max-width: 600px;
-            padding: 20px;
-        }
-
-        .lia-image {
-            width: 280px;
-            height: 280px;
-            border: 1px solid #333;
-            margin-bottom: 30px;
-            filter: grayscale(100%) contrast(120%);
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.1);
-            object-fit: cover;
-        }
-
-        h1 {
-            font-size: 1.5rem;
-            letter-spacing: 5px;
-            margin-bottom: 10px;
-            color: white;
-        }
-
-        .status-bar {
-            color: var(--primary-red);
-            font-size: 0.9rem;
-            margin-bottom: 40px;
-            text-transform: uppercase;
-        }
-
-        .countdown {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--primary-red);
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
-        }
-
-        .countdown-label {
-            font-size: 0.8rem;
-            color: var(--text-gray);
-            margin-bottom: 40px;
-            letter-spacing: 2px;
-        }
-
-        .btn {
-            background: transparent;
-            color: white;
-            border: 1px solid white;
-            padding: 15px 40px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Courier Prime', monospace;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn:hover {
-            background: white;
-            color: black;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-        }
-
-        .progress-container {
-            margin-top: 50px;
-            width: 100%;
-        }
-
-        .progress-text {
-            font-size: 0.8rem;
-            color: var(--text-gray);
-            margin-bottom: 10px;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 4px;
-            background: #1a1a1a;
-            position: relative;
-        }
-
-        .progress-fill {
-            width: 0.1%; /* İlk satış gelince burayı artıracağız */
-            height: 100%;
-            background: var(--primary-red);
-        }
-
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.7; }
-            100% { opacity: 1; }
-        }
-
-        .operational {
-            animation: pulse 2s infinite;
-        }
+        :root { --primary-red: #ff0000; --bg-black: #050505; --text-gray: #a0a0a0; }
+        body { background-color: var(--bg-black); color: white; font-family: 'Courier Prime', monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; text-align: center; }
+        .container { max-width: 600px; padding: 20px; }
+        .lia-image { width: 280px; height: 280px; border: 1px solid #333; margin-bottom: 30px; filter: grayscale(100%) contrast(120%); box-shadow: 0 0 20px rgba(255, 0, 0, 0.1); object-fit: cover; }
+        h1 { font-size: 1.5rem; letter-spacing: 5px; margin-bottom: 10px; color: white; }
+        .status-bar { color: var(--primary-red); font-size: 0.9rem; margin-bottom: 40px; text-transform: uppercase; }
+        .countdown { font-size: 2.5rem; font-weight: bold; color: var(--primary-red); margin-bottom: 10px; text-shadow: 0 0 10px rgba(255, 0, 0, 0.3); }
+        .countdown-label { font-size: 0.8rem; color: var(--text-gray); margin-bottom: 40px; letter-spacing: 2px; }
+        .btn { background: transparent; color: white; border: 1px solid white; padding: 15px 40px; font-size: 1rem; cursor: pointer; transition: all 0.3s ease; font-family: 'Courier Prime', monospace; text-decoration: none; display: inline-block; }
+        .btn:hover { background: white; color: black; box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); }
+        .progress-container { margin-top: 50px; width: 100%; }
+        .progress-text { font-size: 0.8rem; color: var(--text-gray); margin-bottom: 10px; }
+        .progress-bar { width: 100%; height: 4px; background: #1a1a1a; position: relative; }
+        .progress-fill { width: 0.1%; height: 100%; background: var(--primary-red); }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
+        .operational { animation: pulse 2s infinite; }
     </style>
 </head>
 <body>
-
     <div class="container">
         <img src="lia.jpg" alt="LIA SYSTEM" class="lia-image">
-
         <h1 class="operational">LIA SYSTEM OPERATIONAL</h1>
         <div class="status-bar">Monitoring 10,000 Units</div>
-
-        <div class="countdown" id="timer">30:00:00:00</div>
+        <div class="countdown" id="timer">00:00:00:00</div>
         <div class="countdown-label">DAYS : HOURS : MIN : SEC</div>
-
         <button class="btn" onclick="window.location.href='https://liaunits.lemonsqueezy.com/checkout/buy/9cf286ac-f785-4333-9338-153e08ceb6c3'">
             [ ACTIVATE UNIT ]
         </button>
-
         <div class="progress-container">
             <div class="progress-text">UNIT STATUS: 0 / 10,000</div>
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
-            </div>
+            <div class="progress-bar"><div class="progress-fill"></div></div>
         </div>
     </div>
 
     <script>
-        // Sayacı 30 Gün Sonraya Ayarlama
-        const targetDate = new Date();
-        targetDate.setDate(targetDate.getDate() + 30);
+        // TARİH BURADA SABİTLENDİ: 10 Mart 2026, Saat 00:00:00
+        const countDownDate = new Date("Mar 10, 2026 00:00:00").getTime();
 
-        function updateTimer() {
+        const x = setInterval(function() {
             const now = new Date().getTime();
-            const distance = targetDate - now;
+            const distance = countDownDate - now;
 
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Formatlama (00:00:00:00)
             document.getElementById("timer").innerHTML = 
                 (days < 10 ? "0" + days : days) + ":" + 
                 (hours < 10 ? "0" + hours : hours) + ":" + 
@@ -172,10 +63,7 @@
                 clearInterval(x);
                 document.getElementById("timer").innerHTML = "SYSTEM EXPIRED";
             }
-        }
-
-        setInterval(updateTimer, 1000);
-        updateTimer();
+        }, 1000);
     </script>
 </body>
 </html>
