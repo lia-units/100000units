@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIA SYSTEM | 10,000 UNITS</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        img {
+            max-width: 300px;
+            border-radius: 5px;
+            filter: grayscale(100%);
+            margin-bottom: 20px;
+            border: 1px solid #333;
+        }
+        h1 {
+            letter-spacing: 5px;
+            font-size: 2.5rem;
+            margin: 10px 0;
+        }
+        .stats {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #888;
+        }
+        .countdown {
+            font-size: 1.5rem;
+            color: #ff0000;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .btn {
+            background-color: transparent;
+            color: #ffffff;
+            border: 1px solid #ffffff;
+            padding: 15px 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .btn:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .footer {
+            margin-top: 50px;
+            font-size: 0.8rem;
+            color: #444;
+            max-width: 80%;
+        }
+    </style>
+</head>
+<body>
+
+    <img src="lia.jpg" alt="LIA SYSTEM">
+
+    <h1>10,000 UNITS</h1>
+
+    <div class="stats">
+        ACTIVATED: 0 / 10,000 <br>
+        SYSTEM EXPIRES IN: <br>
+        <div id="countdown" class="countdown"></div>
+    </div>
+
+    <button class="btn" onclick="alert('SYSTEM INITIALIZING: Payment Gateway Approval Pending...')">[ ACTIVATE UNIT ]</button>
+
+    <div class="footer">
+        1 UNIT = $10 <br>
+        NO REFUNDS. NO EXPLANATIONS. <br>
+        LIA IS WATCHING.
+    </div>
+
+    <script>
+        // BİTİŞ TARİHİ: Burayı 30 gün sonrasına ayarla (Yıl, Ay-1, Gün)
+        var countDownDate = new Date("Mar 10, 2026 00:00:00").getTime();
+
+        var x = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "SYSTEM EXPIRED";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
