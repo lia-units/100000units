@@ -19,27 +19,31 @@
             overflow-x: hidden;
         }
         img {
-            max-width: 300px;
-            border-radius: 5px;
-            filter: grayscale(100%);
+            max-width: 250px;
+            width: 80%;
+            border-radius: 2px;
+            filter: grayscale(100%) contrast(110%);
             margin-bottom: 20px;
-            border: 1px solid #333;
+            border: 1px solid #222;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
         }
         h1 {
             letter-spacing: 5px;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             margin: 10px 0;
+            font-weight: bold;
         }
         .stats {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             margin-bottom: 30px;
-            color: #888;
+            color: #bbbbbb; /* Daha okunur bir gri */
         }
         .countdown {
             font-size: 1.5rem;
             color: #ff0000;
             font-weight: bold;
             margin-top: 10px;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
         }
         .btn {
             background-color: transparent;
@@ -51,16 +55,21 @@
             transition: all 0.3s;
             text-transform: uppercase;
             letter-spacing: 2px;
+            margin-top: 10px;
         }
         .btn:hover {
             background-color: #ffffff;
             color: #000000;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
         }
         .footer {
             margin-top: 50px;
-            font-size: 0.8rem;
-            color: #444;
+            font-size: 0.9rem;
+            color: #888888; /* Okunabilirliği artırıldı */
             max-width: 80%;
+            line-height: 1.6;
+            border-top: 1px solid #222;
+            padding-top: 20px;
         }
     </style>
 </head>
@@ -76,17 +85,17 @@
         <div id="countdown" class="countdown"></div>
     </div>
 
-    <button class="btn" onclick="alert('SYSTEM INITIALIZING: Payment Gateway Approval Pending...')">[ ACTIVATE UNIT ]</button>
+    <button class="btn" onclick="alert('SYSTEM INITIALIZING: Payment gateway approval pending. Check back in 24 hours.')">[ ACTIVATE UNIT ]</button>
 
     <div class="footer">
         1 UNIT = $10 <br>
         NO REFUNDS. NO EXPLANATIONS. <br>
-        LIA IS WATCHING.
+        <strong>LIA IS WATCHING.</strong>
     </div>
 
     <script>
-        // BİTİŞ TARİHİ: Burayı 30 gün sonrasına ayarla (Yıl, Ay-1, Gün)
-        var countDownDate = new Date("Mar 10, 2026 00:00:00").getTime();
+        // BİTİŞ TARİHİ: 30 Mart 2026 olarak ayarlandı (Senin takvimine göre güncelleyebilirsin)
+        var countDownDate = new Date("Mar 30, 2026 00:00:00").getTime();
 
         var x = setInterval(function() {
             var now = new Date().getTime();
