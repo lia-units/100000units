@@ -3,116 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LIA SYSTEM | 10,000 UNITS</title>
+    <title>LIA | SYSTEM OPERATIONAL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-red: #ff0000;
+            --bg-black: #050505;
+            --text-gray: #a0a0a0;
+        }
+
         body {
-            background-color: #000000;
-            color: #ffffff;
-            font-family: 'Courier New', Courier, monospace;
+            background-color: var(--bg-black);
+            color: white;
+            font-family: 'Courier Prime', monospace;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
             margin: 0;
-            text-align: center;
             overflow-x: hidden;
+            text-align: center;
         }
-        img {
-            max-width: 250px;
-            width: 80%;
-            border-radius: 2px;
-            filter: grayscale(100%) contrast(110%);
-            margin-bottom: 20px;
-            border: 1px solid #222;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+
+        .container {
+            max-width: 600px;
+            padding: 20px;
         }
-        h1 {
-            letter-spacing: 5px;
-            font-size: 2.2rem;
-            margin: 10px 0;
-            font-weight: bold;
-        }
-        .stats {
-            font-size: 1.1rem;
+
+        .lia-image {
+            width: 280px;
+            height: 280px;
+            border: 1px solid #333;
             margin-bottom: 30px;
-            color: #bbbbbb; /* Daha okunur bir gri */
+            filter: grayscale(100%) contrast(120%);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.1);
+            object-fit: cover;
         }
-        .countdown {
+
+        h1 {
             font-size: 1.5rem;
-            color: #ff0000;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .status-bar {
+            color: var(--primary-red);
+            font-size: 0.9rem;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        .countdown {
+            font-size: 2.5rem;
             font-weight: bold;
-            margin-top: 10px;
+            color: var(--primary-red);
+            margin-bottom: 10px;
             text-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
         }
+
+        .countdown-label {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+        }
+
         .btn {
-            background-color: transparent;
-            color: #ffffff;
-            border: 1px solid #ffffff;
-            padding: 15px 30px;
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+            padding: 15px 40px;
             font-size: 1rem;
             cursor: pointer;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-top: 10px;
+            transition: all 0.3s ease;
+            font-family: 'Courier Prime', monospace;
+            text-decoration: none;
+            display: inline-block;
         }
+
         .btn:hover {
-            background-color: #ffffff;
-            color: #000000;
+            background: white;
+            color: black;
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
         }
-        .footer {
+
+        .progress-container {
             margin-top: 50px;
-            font-size: 0.9rem;
-            color: #888888; /* Okunabilirliği artırıldı */
-            max-width: 80%;
-            line-height: 1.6;
-            border-top: 1px solid #222;
-            padding-top: 20px;
+            width: 100%;
+        }
+
+        .progress-text {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: #1a1a1a;
+            position: relative;
+        }
+
+        .progress-fill {
+            width: 0.1%; /* İlk satış gelince burayı artıracağız */
+            height: 100%;
+            background: var(--primary-red);
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        .operational {
+            animation: pulse 2s infinite;
         }
     </style>
 </head>
 <body>
 
-    <img src="lia.jpg" alt="LIA SYSTEM">
+    <div class="container">
+        <img src="lia.jpg" alt="LIA SYSTEM" class="lia-image">
 
-    <h1>10,000 UNITS</h1>
+        <h1 class="operational">LIA SYSTEM OPERATIONAL</h1>
+        <div class="status-bar">Monitoring 10,000 Units</div>
 
-    <div class="stats">
-        ACTIVATED: 0 / 10,000 <br>
-        SYSTEM EXPIRES IN: <br>
-        <div id="countdown" class="countdown"></div>
-    </div>
+        <div class="countdown" id="timer">30:00:00:00</div>
+        <div class="countdown-label">DAYS : HOURS : MIN : SEC</div>
 
-    <button class="btn" onclick="alert('SYSTEM INITIALIZING: Payment gateway approval pending. Check back in 24 hours.')">[ ACTIVATE UNIT ]</button>
+        <button class="btn" onclick="window.location.href='https://liaunits.lemonsqueezy.com/checkout/buy/9cf286ac-f785-4333-9338-153e08ceb6c3'">
+            [ ACTIVATE UNIT ]
+        </button>
 
-    <div class="footer">
-        1 UNIT = $10 <br>
-        NO REFUNDS. NO EXPLANATIONS. <br>
-        <strong>LIA IS WATCHING.</strong>
+        <div class="progress-container">
+            <div class="progress-text">UNIT STATUS: 0 / 10,000</div>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
     </div>
 
     <script>
-        // BİTİŞ TARİHİ: 30 Mart 2026 olarak ayarlandı (Senin takvimine göre güncelleyebilirsin)
-        var countDownDate = new Date("Mar 30, 2026 00:00:00").getTime();
+        // Sayacı 30 Gün Sonraya Ayarlama
+        const targetDate = new Date();
+        targetDate.setDate(targetDate.getDate() + 30);
 
-        var x = setInterval(function() {
-            var now = new Date().getTime();
-            var distance = countDownDate - now;
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        function updateTimer() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
 
-            document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
-            + minutes + "m " + seconds + "s ";
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Formatlama (00:00:00:00)
+            document.getElementById("timer").innerHTML = 
+                (days < 10 ? "0" + days : days) + ":" + 
+                (hours < 10 ? "0" + hours : hours) + ":" + 
+                (minutes < 10 ? "0" + minutes : minutes) + ":" + 
+                (seconds < 10 ? "0" + seconds : seconds);
 
             if (distance < 0) {
                 clearInterval(x);
-                document.getElementById("countdown").innerHTML = "SYSTEM EXPIRED";
+                document.getElementById("timer").innerHTML = "SYSTEM EXPIRED";
             }
-        }, 1000);
+        }
+
+        setInterval(updateTimer, 1000);
+        updateTimer();
     </script>
 </body>
 </html>
