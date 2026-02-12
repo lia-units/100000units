@@ -6,110 +6,181 @@
 <title>LIA SYSTEM // ACTIVE</title>
 
 <style>
-body {
+* {
     margin: 0;
     padding: 0;
-    background-color: #000;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000;
     color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
     text-align: center;
 }
 
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 60px 20px;
+    max-width: 700px;
+    padding: 40px 20px;
 }
 
 h1 {
-    font-size: 28px;
-    letter-spacing: 6px;
     font-weight: 300;
-    margin-bottom: 10px;
+    letter-spacing: 6px;
+    font-size: 20px;
+    opacity: 0.8;
 }
 
-.subtitle {
+.sub {
+    margin-top: 10px;
     font-size: 12px;
     letter-spacing: 3px;
-    opacity: 0.6;
-    margin-bottom: 60px;
+    opacity: 0.5;
 }
 
 .units {
-    font-size: 56px;
-    letter-spacing: 6px;
-    margin-bottom: 15px;
+    margin: 60px 0 10px;
+    font-size: 52px;
+    letter-spacing: 4px;
+    font-weight: 300;
 }
 
-.smalltext {
-    font-size: 13px;
-    opacity: 0.5;
-    margin-bottom: 60px;
-    letter-spacing: 2px;
+.acquired {
+    font-size: 14px;
+    opacity: 0.6;
+    margin-bottom: 50px;
 }
 
-.button {
-    display: block;
-    width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 18px;
-    background-color: #fff;
+button {
+    background: #e6e6e6;
     color: #000;
-    text-decoration: none;
-    font-size: 16px;
+    border: none;
+    padding: 18px 40px;
+    font-size: 14px;
     letter-spacing: 3px;
-    transition: 0.2s ease;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 400px;
 }
 
-.button:hover {
-    background-color: #ddd;
+button:hover {
+    background: #fff;
+    transform: scale(1.02);
 }
 
-.timer {
+button.pulse {
+    animation: pulse 2.5s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.4); }
+    70% { box-shadow: 0 0 0 15px rgba(255,255,255,0); }
+    100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+}
+
+.countdown {
     margin-top: 60px;
     font-size: 16px;
     letter-spacing: 3px;
-    opacity: 0.7;
+    opacity: 0.8;
+}
+
+.timer {
+    margin-top: 15px;
+    font-size: 22px;
+    letter-spacing: 4px;
 }
 
 .footer {
-    margin-top: 40px;
+    margin-top: 60px;
     font-size: 12px;
     opacity: 0.4;
     line-height: 1.6;
 }
 
+@media(max-width:600px){
+    .units { font-size: 36px; }
+    button { font-size: 12px; }
+}
 </style>
 </head>
-
 <body>
 
 <div class="container">
 
-    <h1>LIA SYSTEM // ACTIVE</h1>
-    <div class="subtitle">AUTONOMOUS ENTITY INITIALIZING</div>
+<h1>LIA SYSTEM // ACTIVE</h1>
+<div class="sub">AUTONOMOUS ENTITY INITIALIZED</div>
 
-    <div class="units">9,993 UNITS AVAILABLE</div>
-    <div class="smalltext">10,000 UNITS MAXIMUM</div>
+<div class="units" id="units">9,993 UNITS AVAILABLE</div>
+<div class="acquired">7 UNITS ACQUIRED</div>
 
-    <a class="button" href="https://liaunits.lemonsqueezy.com/checkout/buy/9cf286ac-f785-4333-9338-153e08ceb6c3" target="_blank">
-        ENTER THE SYSTEM — $10
-    </a>
+<button class="pulse" onclick="window.location.href='https://liaunits.lemonsqueezy.com/checkout/buy/9cf286ac-f785-4333-9338-153e08ceb6c3'">
+ENTER THE SYSTEM — $10
+</button>
 
-    <div class="timer">
-        SYSTEM SELF-DESTRUCTS IN: 28 DAYS
-    </div>
+<div class="countdown">
+SYSTEM TERMINATES IN
+<div class="timer" id="timer"></div>
+</div>
 
-    <div class="footer">
-        When 10,000 entries are reached, the system closes permanently.<br>
-        The outcome will be revealed publicly.<br>
-        No refunds. No explanations.
-    </div>
+<div class="footer">
+When 10,000 entries are reached, the system closes permanently.<br>
+The outcome will be revealed publicly.<br>
+No refunds. No explanations.
+</div>
 
 </div>
 
+<script>
+
+// ===== UNIT COUNTER ANIMATION =====
+let available = 9993;
+const unitsEl = document.getElementById("units");
+
+// Subtle fake activity every 20-40 seconds
+setInterval(() => {
+    if (available > 0) {
+        available--;
+        unitsEl.innerText = available.toLocaleString() + " UNITS AVAILABLE";
+    }
+}, Math.floor(Math.random() * 20000) + 20000);
+
+
+// ===== COUNTDOWN TIMER =====
+// 28 days from first load
+const endDate = new Date();
+endDate.setDate(endDate.getDate() + 28);
+
+function updateTimer() {
+    const now = new Date();
+    const distance = endDate - now;
+
+    if (distance <= 0) {
+        document.getElementById("timer").innerText = "00:00:00:00";
+        return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((distance / (1000 * 60)) % 60);
+    const seconds = Math.floor((distance / 1000) % 60);
+
+    document.getElementById("timer").innerText =
+        `${days}D : ${hours}H : ${minutes}M : ${seconds}S`;
+}
+
+setInterval(updateTimer, 1000);
+updateTimer();
+
+</script>
+
 </body>
 </html>
+
 
 
