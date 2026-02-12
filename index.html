@@ -1,135 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>LIA // SYSTEM ACTIVE</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LIA SYSTEM // ACTIVE</title>
 
-  <style>
-    body {
-      margin: 0;
-      background-color: #000000;
-      color: #ffffff;
-      font-family: Arial, Helvetica, sans-serif;
-      text-align: center;
-    }
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
 
-    .container {
-      padding: 80px 20px;
-      max-width: 600px;
-      margin: auto;
-    }
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
 
-    h1 {
-      font-weight: 300;
-      letter-spacing: 4px;
-      margin-bottom: 10px;
-    }
+h1 {
+    font-size: 28px;
+    letter-spacing: 6px;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
 
-    .sub {
-      font-size: 12px;
-      opacity: 0.6;
-      letter-spacing: 2px;
-      margin-bottom: 60px;
-    }
+.subtitle {
+    font-size: 12px;
+    letter-spacing: 3px;
+    opacity: 0.6;
+    margin-bottom: 60px;
+}
 
-    .units {
-      font-size: 42px;
-      letter-spacing: 5px;
-      margin-bottom: 20px;
-    }
+.units {
+    font-size: 56px;
+    letter-spacing: 6px;
+    margin-bottom: 15px;
+}
 
-    .acquired {
-      font-size: 14px;
-      opacity: 0.6;
-      margin-bottom: 60px;
-    }
+.smalltext {
+    font-size: 13px;
+    opacity: 0.5;
+    margin-bottom: 60px;
+    letter-spacing: 2px;
+}
 
-    .button {
-      display: block;
-      width: 100%;
-      padding: 20px;
-      background: #ffffff;
-      color: #000000;
-      text-decoration: none;
-      font-weight: bold;
-      letter-spacing: 2px;
-      transition: 0.3s;
-    }
+.button {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 18px;
+    background-color: #fff;
+    color: #000;
+    text-decoration: none;
+    font-size: 16px;
+    letter-spacing: 3px;
+    transition: 0.2s ease;
+}
 
-    .button:hover {
-      background: #cccccc;
-    }
+.button:hover {
+    background-color: #ddd;
+}
 
-    .countdown {
-      margin-top: 50px;
-      font-size: 16px;
-      letter-spacing: 2px;
-      opacity: 0.8;
-    }
+.timer {
+    margin-top: 60px;
+    font-size: 16px;
+    letter-spacing: 3px;
+    opacity: 0.7;
+}
 
-    .small {
-      margin-top: 40px;
-      font-size: 11px;
-      opacity: 0.4;
-    }
-  </style>
+.footer {
+    margin-top: 40px;
+    font-size: 12px;
+    opacity: 0.4;
+    line-height: 1.6;
+}
+
+</style>
 </head>
 
 <body>
 
 <div class="container">
 
-  <h1>LIA SYSTEM // ACTIVE</h1>
-  <div class="sub">
-    AUTONOMOUS ENTITY INITIALIZING
-  </div>
+    <h1>LIA SYSTEM // ACTIVE</h1>
+    <div class="subtitle">AUTONOMOUS ENTITY INITIALIZING</div>
 
-  <div class="units">
-    9,993 UNITS AVAILABLE
-  </div>
+    <div class="units">9,993 UNITS AVAILABLE</div>
+    <div class="smalltext">10,000 UNITS MAXIMUM</div>
 
-  <div class="acquired">
-    7 UNITS ACQUIRED
-  </div>
+    <a class="button" href="https://liaunits.lemonsqueezy.com/checkout/buy/9cf286ac-f785-4333-9338-153e08ceb6c3" target="_blank">
+        ENTER THE SYSTEM — $10
+    </a>
 
-  <a class="button" href="https://liaunits.lemonsqueezy.com/checkout/buy/9cf286ac-f785-4333-9338-153e08ceb6c3" target="_blank">
-    ACQUIRE 1 UNIT — $10
-  </a>
+    <div class="timer">
+        SYSTEM SELF-DESTRUCTS IN: 28 DAYS
+    </div>
 
-  <div class="countdown" id="countdown">
-    SYSTEM SELF-DESTRUCTS IN: 28 DAYS
-  </div>
-
-  <div class="small">
-    The outcome will be revealed when the system closes.<br>
-    No refunds. No explanations.
-  </div>
+    <div class="footer">
+        When 10,000 entries are reached, the system closes permanently.<br>
+        The outcome will be revealed publicly.<br>
+        No refunds. No explanations.
+    </div>
 
 </div>
 
-<script>
-  const endDate = new Date();
-  endDate.setDate(endDate.getDate() + 28);
-
-  function updateCountdown() {
-    const now = new Date();
-    const diff = endDate - now;
-
-    if (diff <= 0) {
-      document.getElementById("countdown").innerHTML = "SYSTEM TERMINATED";
-      return;
-    }
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    document.getElementById("countdown").innerHTML =
-      "SYSTEM SELF-DESTRUCTS IN: " + days + " DAYS";
-  }
-
-  updateCountdown();
-  setInterval(updateCountdown, 60000);
-</script>
-
 </body>
 </html>
+
 
