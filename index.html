@@ -1,176 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LIA | SYSTEM OPERATIONAL</title>
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-red: #ff0000;
-            --bg-black: #050505;
-            --text-gray: #a0a0a0;
-        }
+  <meta charset="UTF-8">
+  <title>LIA // CLOSED SYSTEM</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        body {
-            background-color: var(--bg-black);
-            color: white;
-            font-family: 'Courier Prime', monospace;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            overflow-x: hidden;
-            text-align: center;
-        }
+  <style>
+    body {
+      margin: 0;
+      background-color: #0d0d0d;
+      color: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: center;
+    }
 
-        .container {
-            max-width: 600px;
-            padding: 20px;
-        }
+    .container {
+      padding: 60px 20px;
+      max-width: 600px;
+      margin: auto;
+    }
 
-        .lia-image {
-            width: 280px;
-            height: 280px;
-            border: 1px solid #333;
-            margin-bottom: 30px;
-            filter: grayscale(100%) contrast(120%);
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
-            object-fit: cover;
-        }
+    h1 {
+      font-weight: 300;
+      letter-spacing: 3px;
+    }
 
-        h1 {
-            font-size: 1.5rem;
-            letter-spacing: 5px;
-            margin-bottom: 10px;
-            color: white;
-        }
+    .status {
+      margin-top: 20px;
+      font-size: 14px;
+      opacity: 0.7;
+    }
 
-        .status-bar {
-            color: var(--primary-red);
-            font-size: 0.9rem;
-            margin-bottom: 40px;
-            text-transform: uppercase;
-        }
+    .units {
+      font-size: 40px;
+      margin: 40px 0;
+      letter-spacing: 4px;
+    }
 
-        .countdown {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--primary-red);
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
-        }
+    .button {
+      display: block;
+      width: 100%;
+      padding: 18px;
+      margin: 15px 0;
+      background: white;
+      color: black;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
 
-        .countdown-label {
-            font-size: 0.8rem;
-            color: var(--text-gray);
-            margin-bottom: 40px;
-            letter-spacing: 2px;
-        }
+    .button:hover {
+      background: #cccccc;
+    }
 
-        .btn {
-            background: transparent;
-            color: white;
-            border: 1px solid white;
-            padding: 15px 40px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Courier Prime', monospace;
-            text-decoration: none;
-            display: inline-block;
-        }
+    .small {
+      font-size: 12px;
+      opacity: 0.5;
+      margin-top: 40px;
+    }
 
-        .btn:hover {
-            background: white;
-            color: black;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-        }
-
-        .progress-container {
-            margin-top: 50px;
-            width: 100%;
-        }
-
-        .progress-text {
-            font-size: 0.8rem;
-            color: var(--text-gray);
-            margin-bottom: 10px;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 4px;
-            background: #1a1a1a;
-            position: relative;
-        }
-
-        .progress-fill {
-            width: 0.7%; /* 7/10000 olduğu için 0.07 değil, görünür olması için 0.7 yapıldı */
-            height: 100%;
-            background: var(--primary-red);
-        }
-
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.7; }
-            100% { opacity: 1; }
-        }
-
-        .operational {
-            animation: pulse 2s infinite;
-        }
-    </style>
+    .countdown {
+      margin-top: 30px;
+      font-size: 18px;
+      opacity: 0.8;
+    }
+  </style>
 </head>
+
 <body>
 
-    <div class="container">
-        <img src="lia.jpg" alt="LIA SYSTEM" class="lia-image">
+<div class="container">
 
-        <h1 class="operational">LIA SYSTEM OPERATIONAL</h1>
-        <div class="status-bar">Monitoring 10,000 Units</div>
+  <h1>LIA SYSTEM // ACTIVE</h1>
 
-        <div class="countdown" id="timer">00:00:00:00</div>
-        <div class="countdown-label">DAYS : HOURS : MIN : SEC</div>
+  <div class="status">
+    A CLOSED SYSTEM<br>
+    10,000 UNITS MAXIMUM
+  </div>
 
-        <button class="btn" onclick="window.location.href='https://liaunits.lemonsqueezy.com/checkout/buy/9cf286ac-f785-4333-9338-153e08ceb6c3'">
-            [ ACTIVATE UNIT ]
-        </button>
+  <div class="units" id="unitCount">
+    9,993 UNITS REMAINING
+  </div>
 
-        <div class="progress-container">
-            <div class="progress-text">UNIT STATUS: 7 / 10,000</div>
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
-            </div>
-        </div>
-    </div>
+  <a class="button" href="https://liaunits.lemonsqueezy.com/checkout/buy/9cf286ac-f785-4333-9338-153e08ceb6c3" target="_blank">
+    ACQUIRE 1 UNIT — $10
+  </a>
 
-    <script>
-        // Hedef Tarih: 10 Mart 2026
-        const countDownDate = new Date("Mar 10, 2026 00:00:00").getTime();
+  <a class="button" href="YOUR_100_LINK" target="_blank">
+    ACQUIRE 10 UNITS — $100
+  </a>
 
-        const x = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = countDownDate - now;
+  <a class="button" href="YOUR_1000_LINK" target="_blank">
+    ACQUIRE 100 UNITS — $1000
+  </a>
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  <div class="countdown" id="countdown">
+    SYSTEM TERMINATES IN: 29 DAYS
+  </div>
 
-            document.getElementById("timer").innerHTML = 
-                (days < 10 ? "0" + days : days) + ":" + 
-                (hours < 10 ? "0" + hours : hours) + ":" + 
-                (minutes < 10 ? "0" + minutes : minutes) + ":" + 
-                (seconds < 10 ? "0" + seconds : seconds);
+  <div class="small">
+    When 10,000 units are acquired or time expires, the system ends.<br>
+    No refunds. No explanations.
+  </div>
 
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("timer").innerHTML = "SYSTEM EXPIRED";
-            }
-        }, 1000);
-    </script>
+</div>
+
+<script>
+  // OPTIONAL: countdown timer
+  const endDate = new Date();
+  endDate.setDate(endDate.getDate() + 29);
+
+  function updateCountdown() {
+    const now = new Date();
+    const diff = endDate - now;
+
+    if (diff <= 0) {
+      document.getElementById("countdown").innerHTML = "SYSTEM TERMINATED";
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    document.getElementById("countdown").innerHTML =
+      "SYSTEM TERMINATES IN: " + days + " DAYS";
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 60000);
+</script>
+
 </body>
 </html>
