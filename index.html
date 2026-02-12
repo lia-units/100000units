@@ -2,50 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>LIA // CLOSED SYSTEM</title>
+  <title>LIA // SYSTEM ACTIVE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
     body {
       margin: 0;
-      background-color: #0d0d0d;
+      background-color: #000000;
       color: #ffffff;
       font-family: Arial, Helvetica, sans-serif;
       text-align: center;
     }
 
     .container {
-      padding: 60px 20px;
+      padding: 80px 20px;
       max-width: 600px;
       margin: auto;
     }
 
     h1 {
       font-weight: 300;
-      letter-spacing: 3px;
+      letter-spacing: 4px;
+      margin-bottom: 10px;
     }
 
-    .status {
-      margin-top: 20px;
-      font-size: 14px;
-      opacity: 0.7;
+    .sub {
+      font-size: 12px;
+      opacity: 0.6;
+      letter-spacing: 2px;
+      margin-bottom: 60px;
     }
 
     .units {
-      font-size: 40px;
-      margin: 40px 0;
-      letter-spacing: 4px;
+      font-size: 42px;
+      letter-spacing: 5px;
+      margin-bottom: 20px;
+    }
+
+    .acquired {
+      font-size: 14px;
+      opacity: 0.6;
+      margin-bottom: 60px;
     }
 
     .button {
       display: block;
       width: 100%;
-      padding: 18px;
-      margin: 15px 0;
-      background: white;
-      color: black;
+      padding: 20px;
+      background: #ffffff;
+      color: #000000;
       text-decoration: none;
       font-weight: bold;
+      letter-spacing: 2px;
       transition: 0.3s;
     }
 
@@ -53,16 +61,17 @@
       background: #cccccc;
     }
 
-    .small {
-      font-size: 12px;
-      opacity: 0.5;
-      margin-top: 40px;
+    .countdown {
+      margin-top: 50px;
+      font-size: 16px;
+      letter-spacing: 2px;
+      opacity: 0.8;
     }
 
-    .countdown {
-      margin-top: 30px;
-      font-size: 18px;
-      opacity: 0.8;
+    .small {
+      margin-top: 40px;
+      font-size: 11px;
+      opacity: 0.4;
     }
   </style>
 </head>
@@ -72,43 +81,36 @@
 <div class="container">
 
   <h1>LIA SYSTEM // ACTIVE</h1>
-
-  <div class="status">
-    A CLOSED SYSTEM<br>
-    10,000 UNITS MAXIMUM
+  <div class="sub">
+    AUTONOMOUS ENTITY INITIALIZING
   </div>
 
-  <div class="units" id="unitCount">
-    9,993 UNITS REMAINING
+  <div class="units">
+    9,993 UNITS AVAILABLE
+  </div>
+
+  <div class="acquired">
+    7 UNITS ACQUIRED
   </div>
 
   <a class="button" href="https://liaunits.lemonsqueezy.com/checkout/buy/9cf286ac-f785-4333-9338-153e08ceb6c3" target="_blank">
     ACQUIRE 1 UNIT — $10
   </a>
 
-  <a class="button" href="YOUR_100_LINK" target="_blank">
-    ACQUIRE 10 UNITS — $100
-  </a>
-
-  <a class="button" href="YOUR_1000_LINK" target="_blank">
-    ACQUIRE 100 UNITS — $1000
-  </a>
-
   <div class="countdown" id="countdown">
-    SYSTEM TERMINATES IN: 29 DAYS
+    SYSTEM SELF-DESTRUCTS IN: 28 DAYS
   </div>
 
   <div class="small">
-    When 10,000 units are acquired or time expires, the system ends.<br>
+    The outcome will be revealed when the system closes.<br>
     No refunds. No explanations.
   </div>
 
 </div>
 
 <script>
-  // OPTIONAL: countdown timer
   const endDate = new Date();
-  endDate.setDate(endDate.getDate() + 29);
+  endDate.setDate(endDate.getDate() + 28);
 
   function updateCountdown() {
     const now = new Date();
@@ -121,7 +123,7 @@
 
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
     document.getElementById("countdown").innerHTML =
-      "SYSTEM TERMINATES IN: " + days + " DAYS";
+      "SYSTEM SELF-DESTRUCTS IN: " + days + " DAYS";
   }
 
   updateCountdown();
@@ -130,3 +132,4 @@
 
 </body>
 </html>
+
