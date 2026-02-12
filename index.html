@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LIA SYSTEM // ACTIVE</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
 * {
     margin: 0;
@@ -15,7 +17,7 @@
 body {
     background: #000;
     color: #fff;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: 'Inter', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,75 +26,62 @@ body {
 }
 
 .container {
-    max-width: 700px;
+    max-width: 800px;
     padding: 40px 20px;
 }
 
-h1 {
-    font-weight: 300;
-    letter-spacing: 6px;
-    font-size: 20px;
-    opacity: 0.8;
+.top-label {
+    letter-spacing: 4px;
+    font-size: 14px;
+    opacity: 0.6;
+    margin-bottom: 20px;
 }
 
-.sub {
-    margin-top: 10px;
-    font-size: 12px;
+.status {
     letter-spacing: 3px;
-    opacity: 0.5;
+    font-size: 18px;
+    margin-bottom: 40px;
+    opacity: 0.8;
 }
 
 .units {
-    margin: 60px 0 10px;
-    font-size: 52px;
-    letter-spacing: 4px;
+    font-size: 72px;
     font-weight: 300;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
 }
 
-.acquired {
+.subtext {
+    font-size: 14px;
+    opacity: 0.5;
+    margin-bottom: 60px;
+}
+
+.button {
+    display: inline-block;
+    padding: 18px 60px;
+    background: #eaeaea;
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 2px;
+    transition: 0.3s ease;
+}
+
+.button:hover {
+    background: #fff;
+}
+
+.countdown-label {
+    margin-top: 80px;
     font-size: 14px;
     opacity: 0.6;
-    margin-bottom: 50px;
-}
-
-button {
-    background: #e6e6e6;
-    color: #000;
-    border: none;
-    padding: 18px 40px;
-    font-size: 14px;
-    letter-spacing: 3px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    width: 100%;
-    max-width: 400px;
-}
-
-button:hover {
-    background: #fff;
-    transform: scale(1.02);
-}
-
-button.pulse {
-    animation: pulse 2.5s infinite;
-}
-
-@keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.4); }
-    70% { box-shadow: 0 0 0 15px rgba(255,255,255,0); }
-    100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+    letter-spacing: 2px;
 }
 
 .countdown {
-    margin-top: 60px;
-    font-size: 16px;
-    letter-spacing: 3px;
-    opacity: 0.8;
-}
-
-.timer {
-    margin-top: 15px;
-    font-size: 22px;
+    margin-top: 20px;
+    font-size: 28px;
     letter-spacing: 4px;
 }
 
@@ -102,85 +91,74 @@ button.pulse {
     opacity: 0.4;
     line-height: 1.6;
 }
-
-@media(max-width:600px){
-    .units { font-size: 36px; }
-    button { font-size: 12px; }
-}
 </style>
 </head>
+
 <body>
 
 <div class="container">
 
-<h1>LIA SYSTEM // ACTIVE</h1>
-<div class="sub">AUTONOMOUS ENTITY INITIALIZED</div>
+    <div class="top-label">AUTONOMOUS ENTITY ONLINE</div>
+    <div class="status">LIA SYSTEM // ACTIVE</div>
 
-<div class="units" id="units">9,993 UNITS AVAILABLE</div>
-<div class="acquired">7 UNITS ACQUIRED</div>
+    <div class="units" id="unitsRemaining">
+        9,993 UNITS AVAILABLE
+    </div>
 
-<button class="pulse" onclick="window.location.href='https://liaunits.lemonsqueezy.com/checkout/buy/9cf286ac-f785-4333-9338-153e08ceb6c3'">
-ENTER THE SYSTEM — $10
-</button>
+    <div class="subtext">
+        10,000 UNITS MAXIMUM
+    </div>
 
-<div class="countdown">
-SYSTEM TERMINATES IN
-<div class="timer" id="timer"></div>
-</div>
+    <a href="https://liaunits.lemonsqueezy.com/checkout/buy/9cf286ac-f785-4333-9338-153e08ceb6c3" 
+       class="button">
+       ENTER THE SYSTEM — $10
+    </a>
 
-<div class="footer">
-When 10,000 entries are reached, the system closes permanently.<br>
-The outcome will be revealed publicly.<br>
-No refunds. No explanations.
-</div>
+    <div class="countdown-label">
+        SYSTEM TERMINATES IN
+    </div>
+
+    <div class="countdown" id="countdownTimer">
+        28D : 00H : 00M : 00S
+    </div>
+
+    <div class="footer">
+        When 10,000 entries are reached, the system closes permanently.<br>
+        The outcome will be revealed publicly.<br>
+        No refunds. No explanations.
+    </div>
 
 </div>
 
 <script>
-
-// ===== UNIT COUNTER ANIMATION =====
-let available = 9993;
-const unitsEl = document.getElementById("units");
-
-// Subtle fake activity every 20-40 seconds
-setInterval(() => {
-    if (available > 0) {
-        available--;
-        unitsEl.innerText = available.toLocaleString() + " UNITS AVAILABLE";
-    }
-}, Math.floor(Math.random() * 20000) + 20000);
-
-
-// ===== COUNTDOWN TIMER =====
-// 28 days from first load
+// SET END DATE HERE (UTC)
 const endDate = new Date();
 endDate.setDate(endDate.getDate() + 28);
 
-function updateTimer() {
+function updateCountdown() {
     const now = new Date();
     const distance = endDate - now;
 
-    if (distance <= 0) {
-        document.getElementById("timer").innerText = "00:00:00:00";
-        return;
-    }
-
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((distance / (1000 * 60)) % 60);
+    const minutes = Math.floor((distance / 1000 / 60) % 60);
     const seconds = Math.floor((distance / 1000) % 60);
 
-    document.getElementById("timer").innerText =
+    document.getElementById("countdownTimer").innerHTML =
         `${days}D : ${hours}H : ${minutes}M : ${seconds}S`;
+
+    if (distance < 0) {
+        document.getElementById("countdownTimer").innerHTML = "SYSTEM CLOSED";
+    }
 }
 
-setInterval(updateTimer, 1000);
-updateTimer();
-
+setInterval(updateCountdown, 1000);
+updateCountdown();
 </script>
 
 </body>
 </html>
+
 
 
 
